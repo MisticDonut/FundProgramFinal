@@ -1,14 +1,24 @@
 function Init(){
 	//prompts and gets the players name
 	var player = prompt("Hi, im here to help you build your character. What's your name?");
-
-	//prompts and gets the player character's name
-	var name = prompt("well " + player + " let us begin. What is your characters Name")
+		if(player === "" || player === null){
+			alert("well, if you don't want to name yourself then i'll just call you Player.")
+			player = "Player"
+		};
 		
+	//prompts and gets the player character's name
+	var name = prompt("well " + player + " let us begin. What is your character's Name");
+		while(name === "" || name === null){
+			name = prompt("look " + player + ", We need a name for your character.")
+		};
+
 	//prompts and gets race name
-	var race = prompt("Next " + player + ", what your race?")
-	
-	alert("Now Roll 4d6 (d6 - 6 sided die) and subtract the lowest die. record the options and well applay them to your stats. if you do not have dice with you look for the file die.html")
+	var race = prompt("Next " + player + ", what your race?");
+		while(race === "" || race === null){
+			race = prompt("there is  no \"no race\" here " + player + ", what your race?")
+		};
+
+	alert("Now Roll 4d6 (d6 - 6 sided die) and subtract the lowest die. record the options and well applay them to your stats. if you do not have dice with you look for the file DiceRoller.html")
 	
 	//initalizes the alility scores and modifiers
 	var abil = []
@@ -33,7 +43,7 @@ function Init(){
 			break;
 
 		case "mountain dwarf":
-		case "Mountain Darf":
+		case "Mountain Dwarf":
 		case "Mountain dwarf":
 		case "mountain dward":
 			race = "Mountain Dwarf"
@@ -190,11 +200,11 @@ function Init(){
 			break;
 			
 		default:
-			alert("This is not a valide race. No Racial modifiers will be applied")
+			alert(race + " is either not spelt correct not a valide race. No Racial modifiers will be applied")
 	}
 	
 	//displays player name then race
-	document.write("<h1>" + name + "</h1><h2> Race: " + race + "</h2>")
+	document.write("<h1>Name: " + name + "</h1><h2> Race: " + race + "</h2>")
 	
 	//dose the math and adds it to the modifiers array, along with wrtting the general stats for the player
 	for(var ic = 0; ic < 6; ic++){
